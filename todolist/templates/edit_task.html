@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Task - Django TODO App</title>
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+        body {
+            background-color: #f0f0f0; /* Background color of the body */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background-color: #c7ecee; /* Light green background color */
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            margin-top: 50px;
+        }
+        h3 {
+            color: #333333; /* Heading color */
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .form-control {
+            padding: 1.375rem .75rem !important;
+            border-radius: 5px;
+            border: 1px solid #ced4da;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .btn-primary {
+            background-color: #4CAF50; /* Button background color */
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .btn-primary:hover {
+            background-color: #45a049; /* Darker background color on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h3 class="pt-5 pb-5">Django TODO App - Edit Task</h3>
+        <form action="{% url 'edit_task' get_task.pk %}" method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <input type="text" name="task" class="form-control" placeholder="Edit the task" value="{{ get_task.task }}">
+            </div>
+            <button type="submit" class="btn btn-primary"><i class="fa fa-pencil"></i> Update Task</button>
+        </form>
+    </div>
+</body>
+</html>
